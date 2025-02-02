@@ -12,7 +12,7 @@ services:
     depends_on:
     - mongo
     environment:
-      spring.data.mongodb.uri: "mongodb://job_user:job_password@localhost:27017/job"
+      spring.data.mongodb.uri: "mongodb://job_user:job_password@mongo:27017/job"
   candidate-service:
     build: ../candidate-service
     image: vinsdocker/candidate-service
@@ -22,7 +22,7 @@ services:
     - mongo
     - job-service
     environment:
-      spring.data.mongodb.uri: "mongodb://candidate_user:candidate_password@localhost:27017/candidate"
+      spring.data.mongodb.uri: "mongodb://candidate_user:candidate_password@mongo:27017/candidate"
       job.service.url: "http://job-service:1080/job/"
   nginx:
     image: nginx
